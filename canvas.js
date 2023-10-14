@@ -40,19 +40,42 @@ async function scrapeCanvas(username, API_TOKEN){
     let currentAssignments = [];
     for(const courseArr of courseInfoArr){
         let assignmentList = [];
+        let fileList = [];
         let grade = await getGradesByCourse(courseArr[1], USER_ID, HEADERS);
         currentGrade = grade[0].grades.current_score;
-        data = await getAssignmentsByCourse(courseArr[1], HEADERS);
+        let files = await getCourseFiles(courseArr[1], API_TOKEN, HEADERS);
+        for(const element of files){
+            if(element !== null){
+                fileList = fileList.concat({file_name: element.display_name, url: element.url, mime_class: element.mime_class})
+            }
+        }
+        let data = await getAssignmentsByCourse(courseArr[1], HEADERS);
         for(const element of data){
             assignmentList = assignmentList.concat({assignment_name: element.name, assignment_due: element.due_at});
         }
         result.courses[courseArr[0]] = {
             grade: currentGrade,
             assignments: assignmentList,
+            files: fileList,
         };
     }
     return result;
 }
+
+async function getCourseFiles(course_id, API_TOKEN, HEADERS) {    
+    const response = await fetch(`${API_URL}/courses/${course_id}/files`, {
+        method: "GET",
+        headers: HEADERS
+    });
+    
+    if (response.ok) {
+        return await response.json();
+    } else {
+        console.error(`Error fetching course files: ${response.statusText}`);
+        return [];
+    }
+}
+
 
 async function getTermIds(HEADERS) {
     const endpoint = "accounts/1/terms"; 
@@ -150,7 +173,12 @@ const runScrapeCanvas = true
 if(runScrapeCanvas){
     scrapeCanvas("kwilbur", API_TOKEN)
     .then(result => {
-        console.log(result.courses['Introduction to Environmental Policy'].assignments);
+        for (let courseKey in result.courses) {
+            if (result.courses.hasOwnProperty(courseKey)) {
+                console.log(courseKey);                   // This will log the key (course name or ID)
+                console.log(result.courses[courseKey]);   // This will log the details of the course
+            }
+        }
     })
 }
 if(getTerms){
