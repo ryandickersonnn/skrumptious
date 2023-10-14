@@ -8,6 +8,10 @@ const TERM_ID_INDEX = 1;
 const START_TIME = 2;
 const END_TIME = 3;
 
+module.exports = {
+    scrapeCanvas,
+};
+
 async function scrapeCanvas(username, API_TOKEN){
     let result = {
         username: username,
