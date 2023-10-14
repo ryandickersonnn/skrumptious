@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sign Up Form</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        .form-group input[type="submit"] {
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        .form-group input[type="submit"]:hover {
+            background-color: #fff;
+        }
+        .info-button {
+            background-color: #fff;
+            color: #4b4848;
+            border: none;
+            border-radius: 3px;
+            padding: 10px 15px;
+            cursor: pointer;
+        }
+
+        .info-button:hover {
+            color: #eee;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Sign Up</h2>
+        <form action="your-server-side-script.php" method="post">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <div class="form-group">
+                <label for="key">Canvas Key</label> <button class="info-button" id = "keyInfo">
+                    <i class="fas fa-info-circle"></i>
+                </button>
+                <input type="text" id="key" name="key" required>
+
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Sign Up">
+            </div>
+        </form>
+    </div>
+    <script>
+        function keyInfo(){
+            alert("Go To Your canvas page Go TO Account click new Access token, then paste the token into the token field");
+        }
+         document.getElementById("keyInfo").addEventListener("click", keyInfo, false);
+    </script>
+</body>
+</html>
