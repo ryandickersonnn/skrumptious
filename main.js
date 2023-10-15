@@ -9,70 +9,55 @@ async function main() {
     console.log("SHOULD BE OBJECT UNDERNEATH");
     let dueDates = [];
     let names = [];
+
     for (let courseKey in result.courses) {
         if (result.courses.hasOwnProperty(courseKey)) {
-            // console.log(result.courses[courseKey]);             // This will log the key (course name or ID)
             const assignments = result.courses[courseKey].assignments;
             for (const assignment of assignments) {
                 const assignmentName = assignment.assignment_name;
                 const assignmentDue = assignment.assignment_due;
-                // console.log('Assignment Name:', assignmentName);
-                // console.log('Assignment Due:', assignmentDue);
                 dueDates.push(assignmentDue);
                 names.push(assignmentName);
               }
-            // for(assignment in result.courses[courseKey].assignments)
-            // console.log(assignment.assignment_name);   // This will log the details of the course
         }
     }
     const now = new Date();
-    let question = "";
-    // let dated = new Map();
     const dated = {};
 
-
-    // for(let i = 0; i < dueDates.length; i++){
-    //     if(dueDates[i] != null){
-    //         const fixedDate = dueDates[i].replace(/[TZ]/g, ' ');
-    //         const parts = fixedDate.split(" ");
-    //         let dueDate = new Date(parts[0]);
-    //         if(dueDate > now){
-    //             question += "Assignment: ";
-    //             question += names[i];
-    //             question += " Due Date: ";
-    //             question += parts[0];
-    //             question += " Due Time: ";
-    //             question += parts[1];
-    //             question += " ";
-
-    //         }
-    //     }
-    // }
     for(let i = 0; i < dueDates.length; i++){
-        if(dueDates[i] != null){
+        if(dueDates[i] !== null){
+            let question = "";
             const fixedDate = dueDates[i].replace(/[TZ]/g, ' ');
             const parts = fixedDate.split(" ");
             let dueDate = new Date(parts[0]);
-            dated[dueDate] = [names[i], parts[0]];
+            if(dueDate > now){
+                question += "Assignment: ";
+                question += names[i];
+                question += " Due Date: ";
+                question += parts[0];
+                question += " Due Time: ";
+                question += parts[1];
+                question += " ";
+                if(dueDate in dated){
+                    dated[dueDate] = dated[dueDate] + question + "\n";
+                }
+                else{
+                    dated[dueDate] = question + "\n";
+                }
             }
         }
-    // for(key in dated){
-    //     console.log(dated[key]);
-    // }
-    const keysArray = Object.keys(dated);
-    keysArray.sort();
-    // let values = dated.keys();
-    // sortedKeys = values.sort();
-    console.log(keysArray);
-    for(key in keysArray){
-        console.log(dated[key])
     }
-    // const sortedMap = new Map([Object.keys(dated)].sort());
-    // console.log(sortedMap)
-    // for (var i = 0, keys = Object.keys(sortedMap), ii = keys.length; i < ii; i++) {
-    //     console.log(keys[i] + '|' + sortedMap[keys[i]]);
-    //   }
-    // console.log(question);
+    const sortedHashMap = Object.fromEntries(
+        Object.entries(dated).sort((a, b) => new Date(a[0]).getTime() - new Date(b[0]).getTime())
+    );
+    let chatGPTString = "";
+    for (let key in sortedHashMap) {
+        if (sortedHashMap.hasOwnProperty(key)) {
+            chatGPTString += sortedHashMap[key];
+        }
+    }
+    console.log(chatGPTString);
+
 }
 
 main();

@@ -38,7 +38,7 @@
         <h3 id="key-label">Authentication Key <i class="fa-solid fa-circle-info" id="key-info" onClick={pressedInfo()}></i></h3>
         <input type="text"  id="key-input" placeholder="Click the 'i' above to locate your canvas authentication key!">
 
-        <input type="submit" value="Lets Go!" id="submit-login">
+        <input type="submit" value="Lets Go!" id="submit-login" onClick={}>
         <p id="nav-login">Back to <a href="login.html">login</a></p>
     </div>
 </body>
@@ -47,6 +47,53 @@
     function pressedInfo() {
         console.log("entering Info Popup")
         document.getElementById("KEY-INFO-BOX").style.visibility = "visible"
+    }
+    
+    async function validateSignUp() {
+        const mysql = require('mysql');
+        // Create a MySQL database connection
+        const connection = mysql.createConnection({
+        host: 'localhost',
+        user: 'root',
+        password: 'Important???',
+        database: 'student_scheduler_login'
+        });
+        // Connect to the database
+        connection.connect(err => {
+        if (err) {
+            console.error('Error connecting to the database: ' + err.stack);
+            return;
+        }
+        console.log('Connected to the database');
+        });
+
+        // Function to check if the username and password match a record in the table
+        function checkCredentials(username, password, callback) {
+            const query = 'SELECT * FROM users WHERE username = ? AND password = ?';
+
+            connection.query(query, [username, password], (error, results) => {
+                if (error) {
+                    console.error('Error executing query: ' + error);
+                    callback(false); // Indicate the login failed
+                    document.getElementById("username-input").style.border = "1px red solid"
+                    document.getElementById("username-input").ariaPlaceholder = "That name is taken! Sorry :("
+                return;
+                }
+
+                if (results.length > 0) {
+                // Username and password match
+                callback(true);
+                } else {
+                // Username and password do not match
+                callback(false);
+                }
+            });
+        }
+        const username = document.getElementById('username-input').value;
+        const password = document.getElementById('password-input').value;
+        sessionStorage.setItem('username', document.getElementById("username-label"));
+        sessionStorage.setItem('password-label', document.getElementById("key-label"));
+        sessionStorage.setItem('key-label', document.getElementById("password-label"));
     }
 
     function exitInfo() {
