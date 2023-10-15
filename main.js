@@ -1,8 +1,13 @@
 const canvasAPI = require('./canvas.js');
+const openaiAPI = require('./openaiaccess.js');
 const username = "kwilbur";
 const API_TOKEN = '6078~aLttsDjfPvDs3JxPVYnVzBhb2Fqqw5jfvrcV9GvOklDkVvV1knXumXjTZILnCpAq';
+const fs = require('fs');
 
-async function main() {
+let gptResponse = "";
+let escape = "";
+
+async function gettheresponse() {
     console.time('requestDuration');    
     const result = await canvasAPI.scrapeCanvas(username, API_TOKEN);
     console.timeEnd('requestDuration'); 
@@ -56,8 +61,13 @@ async function main() {
             chatGPTString += sortedHashMap[key];
         }
     }
-    console.log(chatGPTString);
+    gptResponse = await openaiAPI.runPrompt(chatGPTString);
+    console.log(gptResponse);
 
 }
+gettheresponse();
 
-main();
+
+
+
+

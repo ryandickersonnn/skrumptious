@@ -25,6 +25,13 @@
         <p id="nav-signup">Don't have an account? Register <a href="signup.html">here.</a></p>
     </div>
     <script>
+        const button = document.getElementById('submit-login');
+
+        // Add a click event listener to the button
+        button.addEventListener('click', function() {
+            // Redirect to another file in the same directory when the button is clicked
+            window.location.href = 'landing-page.html';
+        }, false);
             const mysql = require('mysql');
 
         // Create a MySQL database connection

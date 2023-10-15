@@ -121,3 +121,10 @@ body {
     right: 5%;
     top: 63%
 }
+div.button_to_js{
+    position: absolute;
+    width: 85%;
+    right: 1%;
+    left: 22%;
+    top: 56%;
+}

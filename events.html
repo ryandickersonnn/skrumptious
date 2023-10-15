@@ -1,0 +1,137 @@
+<!-- <!DOCTYPE html>
+<html>
+    <head>
+        <title>help</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/5.5.0/main.min.css">
+    </head>
+    <body>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/5.5.0/main.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/5.5.0/daygrid.min.js"></script>
+        <script>
+            import { Calendar } from '@fullcalendar/core';
+            import dayGridPlugin from '@fullcalendar/daygrid';
+            let dataReceived = localStorage.getItem('myData');
+            console.log(dataReceived);
+            var calendar = new Calendar(document.getElementById('calendar'), {
+                plugins: [dayGridPlugin],
+                initialView: 'dayGridMonth'
+            });
+
+            calendar.render();
+        </script>
+        <p>Hello World</p>
+        <div id="calendar"></div>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                var calendarEl = document.getElementById('calendar');
+                var calendar = new FullCalendar.Calendar(calendarEl, {
+                    plugins: [ 'dayGrid' ],
+                    initialView: 'dayGridMonth'
+                });
+
+                calendar.render();
+            });
+            </script>
+    </body>
+</html> -->
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <meta charset='utf-8' />
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.9/index.global.min.js'></script>
+  </head>
+  <body>
+    <div id='calendar'></div>
+    <script>
+
+        document.addEventListener('DOMContentLoaded', function() {
+          var calendarEl = document.getElementById('calendar');
+          var calendar = new FullCalendar.Calendar(calendarEl, {
+            initialView: 'dayGridMonth'
+          });
+          calendar.render();
+        });
+  
+  
+        // Assume you have already created a FullCalendar instance.
+  // You should have a div with an ID like "calendar" to render the calendar.
+  
+  document.addEventListener('DOMContentLoaded', function() {
+    var calendarEl = document.getElementById('calendar');
+    var calendar = new FullCalendar.Calendar(calendarEl, {
+      // Your FullCalendar configuration options go here
+      plugins: [ 'dayGrid' ],
+      defaultView: 'dayGridMonth',
+      events: [
+        // Existing events, if any
+      ],
+    });
+  
+    calendar.render();
+  
+  });
+  document.addEventListener('DOMContentLoaded', function() {
+              var calendarEl = document.getElementById('calendar');
+              var calendar = new FullCalendar.Calendar(calendarEl, {
+                  initialView: 'dayGridMonth',
+                  events: [
+                      // Existing events, if any
+                  ]
+              });
+  
+              calendar.render();
+  
+              // Function to add an event to the FullCalendar
+              function addEventToCalendar(title, date, description) {
+                  var event = {
+                      title: title,
+                      start: date, // Date should be in ISO format, e.g., "2023-10-20"
+                      description: description,
+                  };
+  
+                  calendar.addEvent(event);
+              }
+              const data = {
+                    "Assignment: HW5": { "name": "Assignment: HW5", "startDate": "2023-10-18" },
+                    "Assignment: Module 5 Individual": { "name": "Assignment: Module 5 Individual", "startDate": "2023-10-18" },
+                    "Assignment: Module 5 Group": { "name": "Assignment: Module 5 Group", "startDate": "2023-10-19" },
+                    "Assignment: Homework 3": { "name": "Assignment: Homework 3", "startDate": "2023-10-20" },
+                    "Assignment: Reaction Paper #2": { "name": "Assignment: Reaction Paper #2", "startDate": "2023-10-21" },
+                    "Assignment: Written Homework 4": { "name": "Assignment: Written Homework 4", "startDate": "2023-10-24" },
+                    "Assignment: Implementation Project 4: Neural Networks": { "name": "Assignment: Implementation Project 4: Neural Networks", "startDate": "2023-10-25" },
+                    "Assignment: Module 6 Individual": { "name": "Assignment: Module 6 Individual", "startDate": "2023-10-26" },
+                    "Assignment: Module 6 Group": { "name": "Assignment: Module 6 Group", "startDate": "2023-10-27" },
+                    "Assignment: Quiz 8 (prog optimization / linking)": { "name": "Assignment: Quiz 8 (prog optimization / linking)", "startDate": "2023-10-28" },
+                    "Assignment: Writing Assignment 3": { "name": "Assignment: Writing Assignment 3", "startDate": "2023-10-29" },
+                    "Assignment: Quiz 9 (more linking)": { "name": "Assignment: Quiz 9 (more linking)", "startDate": "2023-10-30" },
+                    "Assignment: Quiz 10 (VM)": { "name": "Assignment: Quiz 10 (VM)", "startDate": "2023-11-01" },
+                    "Assignment: Quiz 11 (ECF: Processes / Signals)": { "name": "Assignment: Quiz 11 (ECF: Processes / Signals)", "startDate": "2023-11-02" },
+                    "Assignment: Writing Assignment 4": { "name": "Assignment: Writing Assignment 4", "startDate": "2023-11-03" },
+                    "Studying": { "name": "Studying", "startDate": "2023-10-15" },
+                    "Watching Movie": { "name": "Watching Movie", "startDate": "2023-10-16" },
+                    "Watching Movie" : { "name": "Watching Movie", "startDate": "2023-10-18" },
+                    "Watching Movie": { "name": "Watching Movie", "startDate": "2023-10-19" },
+                    "Watching Movie": { "name": "Watching Movie", "startDate": "2023-10-21" },
+                    "Watching Movie": { "name": "Watching Movie", "startDate": "2023-10-23" },
+                    "Studying": { "name": "Studying", "startDate": "2023-10-17" },
+                    "Studying": { "name": "Studying", "startDate": "2023-10-18" }
+                    
+                }
+
+const jsonData = JSON.stringify(data, null, 2); // The null and 2 parameters are for formatting the JSON with 2 spaces of indentation
+
+for (const assignmentKey in data) {
+  if (data.hasOwnProperty(assignmentKey)) {
+    const assignment = data[assignmentKey];
+    const { name, startDate } = assignment;
+    addEventToCalendar(assignment.name, assignment.startDate);
+     }
+    }
+
+              // Example usage of the addEventToCalendar function
+              addEventToCalendar("Birthday Party", "2023-10-20");
+          });
+  
+      </script>
+  </body>
+</html>

@@ -24,6 +24,13 @@
             <textarea id="chat-box" type="text" placeholder="Example: Also I would like to watch 10 hours of one piece and study 6 hours for my exam"></textarea>
             <div id="time-label">Pick a timeframe.</div>
 
+
+
+
+            <div class = "button_to_js">
+                <button id = "toNext">Submit!</button>
+            </div>
+
             <div class="day-options">
                 <input type="radio" class="day-choice" id="1day"> <label for="1day"> 24 hours</label><br>
             </div>
@@ -54,5 +61,17 @@
         </div>
     </div>
     <img src="cal-pro.png" alt="MOCK-UP CAL" id="cal-pro">
+    <script>
+        const button = document.getElementById('toNext');
+
+        // Add a click event listener to the button 
+        button.addEventListener('click', function() {
+            // Redirect to another file in the same directory when the button is clicked
+            let pass = document.getElementById('chat-box').value;
+            localStorage.setItem('myData', pass);
+            window.location.href = 'events.html';
+        }, false);
+
+    </script>
 </body>
 </html>
