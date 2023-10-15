@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href= "signup.css">
+    <link rel="stylesheet" href="">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;500;600&family=Work+Sans:ital,wght@0,200;0,300;0,400;0,500;1,200;1,300;1,400&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/2c8c6f114c.js" crossorigin="anonymous"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="KEY-INFO-BOX">
+        <i class="fa-regular fa-face-smile" id="key-smiley"></i>
+        <p id="key-intro">In order to accurately schedule your tasks, The SKRRt Scheduler would like access to your Canvas Student account. We do not store your personal information, but rather use the Canvas API to send your information to our AI whenever you ask for a schedule. Please follow the steps below on where to find your Authentication Key in your Student Canvas account settings.</p>
+        <ol id="key-instruct">
+            <li>Log in to your Canvas Student account.</li>
+            <li>Click on your profile in the top lefthand corner, then select “Settings” from the choice in the menu.</li>
+            <li>Scroll down to the section titled “Approved Integrations.”</li>
+            <li>Add a new access key token with your desired description name and expiration date.</li>
+            <li>Copy the given key and store it somewhere safe! You won't be able to access this specific token again, so make sure to copy it so you can paste it here!</li>
+            <li>Enter in your generated key and click register!</li>
+        </ol>
+        <button onClick={exitInfo()} id="exit-info-button">All set!</button>
+    </div>
+    <h2 id="siteHead">The SKRRt Scheduler</h2>
+    <h3 id="signupTitle">Sign Up Below!</h3>
+    <div class="signup-background">
+        <h3 id="username-label">Username</h3>
+        <input type="text" placeholder="Select a Unique Username!" id="username-input">
+        
+        <h3 id="password-label">Password</h3>
+        <input type="text" placeholder="Choose a Strong Password!" id="password-input">
+
+        <h3 id="key-label">Authentication Key <i class="fa-solid fa-circle-info" id="key-info" onClick={pressedInfo()}></i></h3>
+        <input type="text"  id="key-input" placeholder="Click the 'i' above to locate your canvas authentication key!">
+
+        <input type="submit" value="Lets Go!" id="submit-login">
+    </div>
+</body>
+</html>
+<script>
+    function pressedInfo() {
+        console.log("entering Info Popup")
+        document.getElementById("KEY-INFO-BOX").style.visibility = "visible"
+    }
+
+    function exitInfo() {
+        console.log("exiting Info Popup")
+        document.getElementById("KEY-INFO-BOX").style.visibility = "hidden"
+    }
+</script>
