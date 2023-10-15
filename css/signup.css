@@ -1,0 +1,145 @@
+body {
+    background-color: rgb(114, 187, 255);
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 300;
+}
+
+#siteHead {
+    text-align: center;
+    margin-top: 4%;
+    font-size: 3em;
+    font-weight: 300;
+}
+
+#signupTitle {
+    text-align: center;
+    margin-top: 4%;
+    margin-bottom: 0px;
+    font-size: 1.5em;
+    font-weight: 300;
+}
+
+.signup-background {
+    background-color: rgb(209, 233, 255);
+    width: 48%;
+    margin-left: 26%;
+    margin-right: 26%;
+    border-radius: 40px;
+}
+
+#username-label {
+    padding-left: 7%;
+    padding-top: 10%;
+    font-weight: 300;
+}
+
+#username-input {
+    margin-left: 7%;
+    height: 5%;
+    width: 80%;
+    margin-right: 13%;
+    border-radius: 6px;
+    padding: 1% 2%;
+    border: 0px;
+}
+
+#password-label {
+    padding-left: 7%;
+    padding-top: 3%;
+    font-weight: 300;
+}
+
+#password-input {
+    margin-left: 7%;
+    height: 5%;
+    width: 80%;
+    margin-right: 13%;
+    border-radius: 6px;
+    padding: 1% 2%;
+    border: 0px;
+}
+
+#key-label {
+    padding-left: 7%;
+    padding-top: 3%;
+    font-weight: 300;
+}
+
+#key-input {
+    margin-left: 7%;
+    height: 5%;
+    width: 80%;
+    margin-right: 13%;
+    border-radius: 6px;
+    padding: 1% 2%;
+    border: 0px;
+}
+
+#submit-login {
+    font-size: 1em;
+    font-weight: 300;
+    background-color: white;
+    border: 1px white;
+    border-radius: 5px;
+    width: 20%;
+    margin: 4% 40% 2% 40%;
+}
+
+#nav-login {
+    text-align: right;
+    margin-right: 10%;
+    padding-bottom: 5%;
+}
+
+a {
+    text-decoration: none;
+    font-weight: 500;
+    color: rgb(114, 187, 255);
+}
+
+#KEY-INFO-BOX {
+    position: absolute;
+    width: 80%;
+    height: 80%;
+    margin: 5% 10%;
+    background-color: whitesmoke;
+    border-radius: 40px;
+    text-align: center;
+    font-weight: 300;
+    visibility: hidden;
+}
+
+#key-smiley {
+    font-size: 3em;
+    margin: 2%;
+}
+
+#key-intro {
+    margin: 0px 7%;
+}
+
+#key-instruct {
+    text-align: left;
+    margin: 5% 25%;
+    font-weight: 400;
+}
+li {
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+input {
+    font-weight: 300;
+    font-family: 'Work Sans', sans-serif;
+}
+
+#exit-info-button {
+    font-size: 1em;
+    font-weight: 300;
+    background-color: rgb(209, 233, 255);
+    border: 1px rgb(209, 233, 255);
+    border-radius: 5px;
+    padding: 5px 0px;
+    width: 20%;
+    margin: .5%;
+}

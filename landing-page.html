@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href= "css/landing-page.css">
+    <link rel="stylesheet" href="">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;500;600&family=Work+Sans:ital,wght@0,200;0,300;0,400;0,500;1,200;1,300;1,400&display=swap" rel="stylesheet">
+    <script src="login.js"></script>
+    <title>Student Scheduler</title>
+</head>
+<body>
+    <img id="logo" src="hackwashu-logo.png" alt="LOGO IMG">
+            <div id="top-banner">
+                <h1>WELCOME, KENWILBS</h1>
+            </div>
+            <div id="left-banner"></div>
+    <div class="row">
+        <div class="column">
+
+            <div id="ai-desc">Ask AI to make a schedule for your assignments!</div>
+            <textarea id="chat-box" type="text" placeholder="Example: Also I would like to watch 10 hours of one piece and study 6 hours for my exam"></textarea>
+            <div id="time-label">Pick a timeframe.</div>
+
+            <div class="day-options">
+                <input type="radio" class="day-choice" id="1day"> <label for="1day"> 24 hours</label><br>
+            </div>
+            <div class="day-options">
+                <input type="radio" class="day-choice" checked="true" id="3day"> <label for="3day"> 3 days</label><br>
+            </div>
+            <div class="day-options">
+                <input type="radio" class="day-choice" id="7day"> <label for="7day"> 7 days</label>
+            </div>
+        </div>
+        <div class="column">
+            <div id="select-date">
+                <label for="start_date">Pick a start date.</label>
+                <input type="date" id="start_date">
+                <img src="select-date-cal.png" alt="Calendar mock-up">
+            </div>
+        </div>
+        <div class="column" id="col3">
+            <h1 id="up-tasks-label">Upcoming Tasks</h1>
+            <div class="top2">
+                <h4>PSYCH 433</h4>
+                <p>Assignment Due Monday 10AM</p>
+            </div>
+            <div class="top2">
+                <h4>CSE 217</h4>
+                <p>Assignment Due Monday 12PM</p>
+            </div>
+        </div>
+    </div>
+    <img src="cal-pro.png" alt="MOCK-UP CAL" id="cal-pro">
+</body>
+</html>
