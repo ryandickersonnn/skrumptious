@@ -7,12 +7,35 @@ async function main() {
     const result = await canvasAPI.scrapeCanvas(username, API_TOKEN);
     console.timeEnd('requestDuration'); 
     console.log("SHOULD BE OBJECT UNDERNEATH");
+    let dueDates = [];
+    let names = [];
     for (let courseKey in result.courses) {
         if (result.courses.hasOwnProperty(courseKey)) {
-            console.log(courseKey);                   // This will log the key (course name or ID)
-            console.log(result.courses[courseKey]);   // This will log the details of the course
+            // console.log(result.courses[courseKey]);             // This will log the key (course name or ID)
+            const assignments = result.courses[courseKey].assignments;
+            for (const assignment of assignments) {
+                const assignmentName = assignment.assignment_name;
+                const assignmentDue = assignment.assignment_due;
+                // console.log('Assignment Name:', assignmentName);
+                // console.log('Assignment Due:', assignmentDue);
+                dueDates.push(assignmentDue);
+                names.push(assignmentName);
+              }
+            // for(assignment in result.courses[courseKey].assignments)
+            // console.log(assignment.assignment_name);   // This will log the details of the course
         }
     }
+    let question = "";
+    for(let i = 0; i < dueDates.length; i++){
+        if(dueDates[i] != null){
+            question += names[i];
+            question += " ";
+            const fixedDate = dueDates[i].replace(/[TZ]/g, ' ');
+            question += fixedDate;
+            question += " ";
+        }
+    }
+    console.log(question);
 }
 
 main();
