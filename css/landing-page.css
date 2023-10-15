@@ -125,6 +125,19 @@ div.button_to_js{
     position: absolute;
     width: 85%;
     right: 1%;
-    left: 22%;
-    top: 56%;
+    left: 20%;
+    top: 45%;
+}
+button.toNext{
+  background-color: lightblue;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px; /* Adjust the padding as needed for the button size */
+  color: white; /* Text color */
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+    
 }
