@@ -1,13 +1,14 @@
 body {
     background-color: rgb(114, 187, 255);
-    /* font-family: 'Josefin Sans', sans-serif; */
     font-family: 'Work Sans', sans-serif;
+    font-weight: 300;
 }
 
 #siteHead {
     text-align: center;
     margin-top: 4%;
     font-size: 3em;
+    font-weight: 300;
 }
 
 #signupTitle {
@@ -15,13 +16,14 @@ body {
     margin-top: 4%;
     margin-bottom: 0px;
     font-size: 1.5em;
+    font-weight: 300;
 }
 
 .signup-background {
     background-color: rgb(209, 233, 255);
-    width: 50%;
-    margin-left: 25%;
-    margin-right: 25%;
+    width: 48%;
+    margin-left: 26%;
+    margin-right: 26%;
     border-radius: 40px;
 }
 
@@ -80,7 +82,19 @@ body {
     border: 1px white;
     border-radius: 5px;
     width: 20%;
-    margin: 4% 40% 10% 40%;
+    margin: 4% 40% 2% 40%;
+}
+
+#nav-login {
+    text-align: right;
+    margin-right: 10%;
+    padding-bottom: 5%;
+}
+
+a {
+    text-decoration: none;
+    font-weight: 500;
+    color: rgb(114, 187, 255);
 }
 
 #KEY-INFO-BOX {

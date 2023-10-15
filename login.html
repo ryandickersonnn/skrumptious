@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;500;600&family=Work+Sans:ital,wght@0,200;0,300;0,400;0,500;1,200;1,300;1,400&display=swap" rel="stylesheet">
-    <title>Document</title>
+    <title>Scheduler Login</title>
 </head>
 <body>
     <h2 id="siteHead">The SKRRt Scheduler</h2>
@@ -21,6 +21,8 @@
         <input type="text" value="Choose a Strong Password!" id="password-input">
 
         <input type="submit" value="Let's Go!" id="submit-login">
+
+        <p id="nav-signup">Don't have an account? Register <a href="signup.html">here.</a></p>
     </div>
     <script>
             const mysql = require('mysql');
@@ -48,8 +50,10 @@
 
             connection.query(query, [username, password], (error, results) => {
                 if (error) {
-                console.error('Error executing query: ' + error);
-                callback(false); // Indicate the login failed
+                    console.error('Error executing query: ' + error);
+                    callback(false); // Indicate the login failed
+                    document.getElementById("username-input").style.border = "1px red solid"
+                    document.getElementById("username-input").ariaPlaceholder = "That name is taken! Sorry :("
                 return;
                 }
 
